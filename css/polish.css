@@ -177,3 +177,6 @@ body { background: var(--bg); }
 .capability .capability-outcome { margin: 22px 0 0; color: var(--text); font-size: .87rem; line-height: 1.5; }
 .capability-outcome span { display: block; margin-bottom: 6px; color: var(--accent); font-size: .56rem; font-weight: 700; letter-spacing: .12em; }
 @media (max-width: 650px) { .capabilities { gap: 8px; } }
+
+/* Keep the Let's Play heading centered with its introduction. */
+.game-intro h2 { width: 100%; margin-inline: auto; text-align: center; }
