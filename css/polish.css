@@ -158,3 +158,22 @@ body { background: var(--bg); }
  .ai-delivery-card h4 { font-size: 1.15rem; }
  .ai-card-description { font-size: .94rem; }
 }
+
+/* Remove the inherited outer grid frame; each capability keeps one top rule. */
+.capabilities { border: 0; }
+.capability { border: 0; border-top: 1px solid var(--border); }
+.stat strong[data-count-to] { font-variant-numeric: tabular-nums; }
+.stat .stat-readable { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Capabilities: practical descriptions and outcomes without enclosing boxes. */
+.capabilities { gap: 20px 36px; }
+.capability { min-width: 0; min-height: 0; display: flex; flex-direction: column; padding: 24px 0; transition: background .2s, border-color .2s; }
+.capability:hover { background: linear-gradient(180deg,rgba(88,214,255,.04),transparent); border-top-color: rgba(88,214,255,.5); }
+.capability-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.capability-top svg { width: 27px; height: 27px; color: var(--accent); }
+.capability-top span { font-size: .65rem; color: var(--text-muted); letter-spacing: .12em; }
+.capability h3 { margin: 0 0 14px; font-size: 1.15rem; line-height: 1.35; letter-spacing: -.015em; }
+.capability .capability-description { flex: 1; margin: 0; font-size: .94rem; line-height: 1.75; }
+.capability .capability-outcome { margin: 22px 0 0; color: var(--text); font-size: .87rem; line-height: 1.5; }
+.capability-outcome span { display: block; margin-bottom: 6px; color: var(--accent); font-size: .56rem; font-weight: 700; letter-spacing: .12em; }
+@media (max-width: 650px) { .capabilities { gap: 8px; } }

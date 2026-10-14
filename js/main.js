@@ -1452,3 +1452,40 @@ function completeQuest() {
         button.innerHTML = paused ? '<span aria-hidden="true">▷</span> RESUME' : '<span aria-hidden="true">Ⅱ</span> PAUSE';
     });
 })();
+
+// Count the two headline metrics once when they enter the viewport.
+// Static text remains available without JavaScript and for screen readers.
+(() => {
+    const counters = [...document.querySelectorAll('[data-count-to]')];
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches || !('IntersectionObserver' in window)) return;
+    const frames = new Map();
+    const finish = element => { element.textContent = element.dataset.countTo + '+'; };
+    const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const element = entry.target;
+            observer.unobserve(element);
+            if (motion.matches) { finish(element); continue; }
+            const target = Number(element.dataset.countTo);
+            const started = performance.now();
+            element.textContent = '0+';
+            const tick = now => {
+                const progress = Math.min((now - started) / 900, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                element.textContent = Math.floor(target * eased) + '+';
+                if (progress < 1) frames.set(element, requestAnimationFrame(tick));
+                else { finish(element); frames.delete(element); }
+            };
+            frames.set(element, requestAnimationFrame(tick));
+        }
+    }, { threshold: 0.5 });
+    counters.forEach(element => observer.observe(element));
+    motion.addEventListener('change', event => {
+        if (!event.matches) return;
+        observer.disconnect();
+        frames.forEach(frame => cancelAnimationFrame(frame));
+        frames.clear();
+        counters.forEach(finish);
+    });
+})();
