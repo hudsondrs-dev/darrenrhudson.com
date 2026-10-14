@@ -284,274 +284,6 @@ button {
     justify-content: center;
 }
 
-.network {
-    position: relative;
-
-    width: 440px;
-    height: 440px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(88, 214, 255, 0.13),
-            rgba(88, 214, 255, 0.03) 35%,
-            transparent 68%
-        );
-
-    animation: networkFloat 8s ease-in-out infinite;
-}
-
-
-/* Technical grid */
-
-.network-grid {
-    position: absolute;
-
-    inset: 5%;
-
-    border: 1px solid rgba(88, 214, 255, 0.08);
-
-    border-radius: 50%;
-
-    background-image:
-        linear-gradient(
-            rgba(88, 214, 255, 0.045) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(88, 214, 255, 0.045) 1px,
-            transparent 1px
-        );
-
-    background-size: 35px 35px;
-
-    mask-image: radial-gradient(
-        circle,
-        black 20%,
-        transparent 72%
-    );
-}
-
-
-/* Orbital rings */
-
-.network::before,
-.network::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 8%;
-
-    border: 1px solid rgba(88, 214, 255, 0.13);
-
-    border-radius: 50%;
-}
-
-.network::after {
-    inset: 25%;
-
-    border-color: rgba(88, 214, 255, 0.2);
-}
-
-
-/* Core */
-
-.network-core {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 82px;
-    height: 82px;
-
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid var(--accent);
-
-    border-radius: 50%;
-
-    background: rgba(8, 9, 12, 0.9);
-
-    box-shadow:
-        0 0 25px rgba(88, 214, 255, 0.2),
-        inset 0 0 20px rgba(88, 214, 255, 0.08);
-
-    z-index: 5;
-}
-
-.network-core span {
-    color: var(--accent);
-
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-}
-
-
-/* Connection lines */
-
-.network-line {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    height: 1px;
-
-    width: 150px;
-
-    transform-origin: left center;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(88, 214, 255, 0.5),
-            rgba(88, 214, 255, 0)
-        );
-
-    opacity: 0.6;
-}
-
-.line-1 {
-    transform: rotate(-48deg);
-}
-
-.line-2 {
-    transform: rotate(-15deg);
-}
-
-.line-3 {
-    transform: rotate(38deg);
-}
-
-.line-4 {
-    transform: rotate(145deg);
-}
-
-.line-5 {
-    transform: rotate(205deg);
-}
-
-.line-6 {
-    transform: rotate(265deg);
-}
-
-
-/* Nodes */
-
-.node {
-    position: absolute;
-
-    width: 74px;
-    height: 74px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(88, 214, 255, 0.45);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(88, 214, 255, 0.13),
-            rgba(8, 9, 12, 0.92)
-        );
-
-    box-shadow:
-        0 0 18px rgba(88, 214, 255, 0.08);
-
-    z-index: 4;
-
-    animation: nodePulse 4s ease-in-out infinite;
-}
-
-.node span {
-    color: var(--text-muted);
-
-    font-size: 0.48rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-
-    text-align: center;
-}
-
-
-/* Node positions */
-
-.node-1 {
-    top: 7%;
-    left: 42%;
-}
-
-.node-2 {
-    top: 27%;
-    right: 3%;
-}
-
-.node-3 {
-    bottom: 17%;
-    right: 8%;
-}
-
-.node-4 {
-    bottom: 3%;
-    left: 38%;
-}
-
-.node-5 {
-    bottom: 27%;
-    left: 3%;
-}
-
-.node-6 {
-    top: 25%;
-    left: 5%;
-}
-
-
-/* ---------------------------------------------------------
-   NETWORK ANIMATION
-   --------------------------------------------------------- */
-
-@keyframes networkFloat {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-10px) rotate(1deg);
-    }
-}
-
-@keyframes nodePulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.75;
-    }
-
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
-}
-
-
 /* ---------------------------------------------------------
    08. STATS
    --------------------------------------------------------- */
@@ -6675,4 +6407,159 @@ footer small {
         animation: none;
     }
 
+}
+/* Usability refinements: navigation, case-study summaries and compact game. */
+html { scroll-padding-top: 100px; }
+[id] { scroll-margin-top: 100px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.menu-toggle { display: none; }
+.case-summary { max-width: var(--max-width); margin: 0 auto 36px; padding: 0 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.case-summary p { padding: 24px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted); }
+.case-summary strong { display: block; color: var(--accent); font-size: .75rem; letter-spacing: .12em; margin-bottom: 12px; }
+.case-details > summary { width: min(100% - 60px, 1140px); margin: 0 auto; padding: 20px 24px; border: 1px solid var(--border); cursor: pointer; color: var(--accent); font-weight: 700; }
+.case-details[open] > summary { margin-bottom: 48px; }
+.case-details > summary:hover { background: var(--accent-soft); }
+.case-study-header, .scale-header { padding-bottom: 44px; }
+.through-line { white-space: nowrap; }
+.quest-hint { padding: 14px 20px; color: var(--text-muted); font-size: .8rem; border-top: 1px solid var(--border); }
+.quest-touch-controls button { touch-action: none; user-select: none; }
+.quest-milestone { position: absolute; top: 12px; left: 16px; pointer-events: none; display: flex; flex-direction: column; font-size: .6rem; letter-spacing: .1em; color: var(--text-muted); }
+.quest-milestone strong { color: var(--accent); }
+.quest-toast { top: 54px; max-width: 94%; text-align: center; }
+@media (pointer: coarse) { .quest-touch-controls { display: grid; } }
+@media (max-width: 900px) {
+    .case-summary { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 650px) {
+    .site-header { padding: 12px 20px; flex-wrap: wrap; }
+    .navigation { display: flex; flex-wrap: wrap; width: 100%; gap: 8px 18px; padding-top: 12px; }
+    .navigation a { padding: 12px 0; }
+    .navigation-ready .menu-toggle { display: inline-flex; min-height: 44px; align-items: center; padding: 0 14px; background: transparent; border: 1px solid var(--border); color: var(--text); font-size: .75rem; letter-spacing: .12em; cursor: pointer; }
+    .navigation-ready .navigation { display: none; }
+    .navigation-ready .menu-toggle[aria-expanded="true"] + .navigation { display: flex; }
+    .hero { padding-top: 130px; }
+    .section h2, .case-study-header h2, .scale-header h2,
+    .technical-work-header h2, .experience-timeline-header h2,
+    .ai-header h2, .game-intro h2, .footer-main h2 { font-size: clamp(2rem, 9vw, 3.5rem); line-height: 1.04; }
+    .experience-timeline-header h2 { font-size: clamp(1.7rem, 7.7vw, 3rem); }
+    .case-study-content h3, .scale-story-content h3 { font-size: clamp(1.5rem, 7vw, 2.3rem); overflow-wrap: break-word; }
+    .case-summary { padding: 0 20px; }
+    .case-summary p { padding: 20px; }
+    .case-details > summary { width: calc(100% - 40px); }
+    .case-study-section, .scale-case-study { padding: 72px 0; }
+    .game-section { width: 100%; padding: 64px 16px; }
+    .quest-header { padding: 14px 12px; gap: 12px; }
+    .quest-header > div:first-child { min-width: 0; }
+    .quest-header > div > span { font-size: .55rem; }
+    .quest-game { height: 360px; }
+    .quest-item { width: 29%; min-width: 0; min-height: 82px; padding: 44px 2px 6px; }
+    .quest-item strong { font-size: clamp(.47rem, 2vw, .65rem); letter-spacing: 0; }
+    .quest-item::before { width: 26px; height: 26px; }
+    .quest-item::after { top: 15px; }
+    .quest-requirements { left: 2%; bottom: 116px; }
+    .quest-integration { left: 35.5%; bottom: 202px; }
+    .quest-golive { left: auto; right: 2%; bottom: 116px; }
+    .platform-one { left: 2%; bottom: 104px; width: 29%; }
+    .platform-two { left: 35.5%; bottom: 190px; width: 29%; }
+    .platform-three { left: auto; right: 2%; bottom: 104px; width: 29%; }
+    .quest-obstacle { width: 46px; height: 40px; padding: 3px; }
+    .quest-obstacle span { font-size: .42rem; }
+    .quest-obstacle strong { font-size: .5rem; }
+    .obstacle-one { left: 34%; animation: none; }
+    .obstacle-two { left: 70%; }
+    .quest-message { padding: 20px; width: calc(100% - 24px); }
+    .quest-message > strong { font-size: 1.8rem; }
+    .quest-message p { font-size: .8rem; margin-top: 12px; }
+    .quest-message button { margin-top: 16px; }
+    .quest-touch-controls { display: grid; padding: 10px; gap: 8px; }
+    .quest-touch-controls button { min-height: 48px; font-size: .7rem; }
+    .quest-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; min-height: 60px; padding: 10px; }
+    .quest-controls > div, .quest-controls > div:first-child { border: 0; padding: 0; }
+    .quest-controls strong { font-size: .55rem; }
+    .quest-hint { padding: 12px; font-size: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .network, .quest-player *, .quest-confetti, .quest-launch-wave { animation: none !important; }
+}
+
+@media (max-width: 650px) { .quest-requirements, .quest-golive { bottom: 128px; } }
+@media (max-width: 650px) { .ai-use-cases { grid-template-columns: minmax(0, 1fr); } .ai-use-cases article { min-width: 0; } }
+@media (min-width: 651px) { .platform-one { width: 30%; } .platform-two { width: 28%; } .platform-three { width: 25%; } }
+
+/* Hero expertise navigation: one slow orbit with upright, compact labels. */
+.hero-visual { min-height: 0; }
+.expertise-system { width: min(100%, 460px); color: var(--text-muted); }
+.orbit-eyebrow { text-align: center; font-size: .6rem; font-weight: 700; letter-spacing: .24em; }
+.expertise-orbit { position: relative; width: 100%; aspect-ratio: 1; isolation: isolate; background: radial-gradient(circle, rgba(88,214,255,.055), transparent 62%); }
+.orbit-track { position: absolute; inset: 17%; border: 1px solid rgba(88,214,255,.18); border-radius: 50%; pointer-events: none; }
+.orbit-track::before { content: ''; position: absolute; inset: 22%; border: 1px dashed rgba(88,214,255,.12); border-radius: 50%; }
+.orbit-track::after { content: ''; position: absolute; inset: -16%; border: 1px solid rgba(255,255,255,.035); border-radius: 50%; }
+.orbit-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 76px; aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgba(88,214,255,.5); border-radius: 50%; background: #0b1016; box-shadow: 0 0 36px rgba(88,214,255,.06); }
+.orbit-core span { font-size: 1rem; font-weight: 750; letter-spacing: .12em; padding-left: .12em; color: var(--text); }
+.orbit-core small { font-size: .42rem; letter-spacing: .17em; color: var(--accent); margin-top: 3px; }
+.orbit-arm { position: absolute; inset: 17%; pointer-events: none; animation: expertise-revolve 72s linear infinite; animation-delay: var(--phase); }
+.orbit-link { position: absolute; top: 50%; left: 100%; width: 100px; min-height: 44px; display: flex; align-items: center; justify-content: center; pointer-events: auto; animation: expertise-upright 72s linear infinite; animation-delay: var(--phase); border-radius: 20px; }
+.orbit-link > span { width: 100%; min-height: 30px; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 0 9px; border: 1px solid rgba(88,214,255,.22); border-radius: 20px; background: #0b1016; color: #c5d0da; font-size: .65rem; font-weight: 700; letter-spacing: .06em; transition: background .2s, border-color .2s, color .2s; }
+.orbit-link i { width: 4px; height: 4px; flex-shrink: 0; border-radius: 50%; background: var(--accent); }
+.orbit-link b { color: var(--accent); font-size: .65rem; font-weight: 400; }
+.orbit-link:hover > span, .orbit-link:focus-visible > span { color: #fff; border-color: var(--accent); background: #10212c; }
+.expertise-orbit:hover .orbit-arm, .expertise-orbit:hover .orbit-link,
+.expertise-orbit:focus-within .orbit-arm, .expertise-orbit:focus-within .orbit-link,
+.orbit-paused .orbit-arm, .orbit-paused .orbit-link { animation-play-state: paused; }
+.orbit-caption { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.orbit-caption p { font-size: .72rem; }
+.orbit-toggle { display: inline-flex; gap: 7px; align-items: center; justify-content: center; min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--text-muted); font-size: .55rem; font-weight: 700; letter-spacing: .12em; cursor: pointer; }
+.orbit-toggle:hover { color: var(--accent); }
+.orbit-toggle[hidden] { display: none; }
+@keyframes expertise-revolve { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes expertise-upright { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+@media (max-width: 650px) {
+    .expertise-system { width: min(100%, 360px); }
+    .orbit-link { width: 86px; }
+    .orbit-link > span { font-size: .6rem; gap: 5px; padding: 0 6px; }
+    .orbit-core { width: 64px; }
+    .orbit-core span { font-size: .85rem; }
+    .orbit-caption p { font-size: .68rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .orbit-arm { animation: none; transform: rotate(calc(var(--phase) / -72s * 360deg)); }
+    .orbit-link { animation: none; transform: translate(-50%,-50%) rotate(calc(var(--phase) / 72s * 360deg)); }
+}
+
+/* Keyboard access and clear game-state feedback. */
+.skip-link { position: fixed; top: 12px; left: 16px; z-index: 1100; transform: translateY(-180%); padding: 12px 18px; background: var(--accent); color: var(--bg); font-weight: 700; }
+.skip-link:focus { transform: translateY(0); }
+.quest-obstacle.resolved { animation: none; border-color: rgba(88,214,255,.45); background: #102329; }
+.quest-obstacle.resolved::before { content: '✓'; color: var(--accent); }
+.quest-obstacle.resolved strong { color: var(--accent); }
+.quest-game.quest-live { box-shadow: inset 0 0 70px rgba(88,214,255,.1); }
+
+/* Keep the final timeline node centered while its glow pulses. */
+.experience-stage.future .experience-stage-marker::before {
+    animation-name: timelineNodeGlow;
+}
+@keyframes timelineNodeGlow {
+    0%, 100% { opacity: .65; }
+    50% { opacity: 1; }
+}
+/* Give the longest flow label the same comfortable inset as its neighbors. */
+.ai-flow-grid > div:not(.ai-flow-arrow) { min-width: 0; padding-inline: 18px; }
+.ai-flow-grid strong.ai-flow-documentation { font-size: .68rem; letter-spacing: .025em; }
+@media (min-width: 901px) and (max-width: 1100px) {
+    .ai-flow-grid { grid-template-columns: 1fr; gap: 10px; }
+    .ai-flow-arrow { min-height: 30px; display: flex; align-items: center; justify-content: center; transform: rotate(90deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .experience-stage.future .experience-stage-marker::before { animation: none; }
+}
+.ai-flow-grid > div:not(.ai-flow-arrow) { grid-template-rows: auto 1fr minmax(54px, auto); }
+.ai-flow-grid small { align-self: start; }
+
+/* Center the introductory copy and keep contact actions in reading order. */
+.footer-intro, .game-description { margin-inline: auto; text-align: center; }
+.footer-actions { width: min(100%, 780px); margin-inline: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.footer-actions .button { text-align: center; }
+@media (max-width: 650px) {
+    .footer-actions { max-width: 360px; grid-template-columns: 1fr; }
 }

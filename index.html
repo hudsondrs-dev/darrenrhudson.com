@@ -12,23 +12,27 @@
     >
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/polish.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
         <div class="brand">DRH</div>
 
-        <nav class="navigation">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" hidden>MENU</button>
+        <nav id="site-navigation" class="navigation" aria-label="Main navigation">
             <a href="#selected-work">WORK</a>
             <a href="#experience">EXPERIENCE</a>
             <a href="#ai">AI</a>
-            <a href="#about">ABOUT</a>
+            <a href="#game">GAME</a>
+            <a href="#contact">CONTACT</a>
         </nav>
     </header>
 
 
-    <main>
+    <main id="main-content" tabindex="-1">
 
         <section class="hero">
 
@@ -59,55 +63,39 @@
 </a>
 
                     <a href="#game" class="button secondary">
-                        PLAY MY RESUME
+                        PLAY IMPLEMENTATION QUEST
                     </a>
                 </div>
 
             </div>
 
 <div class="hero-visual">
-
-    <div class="network">
-
-        <div class="network-grid"></div>
-
-        <div class="network-line line-1"></div>
-        <div class="network-line line-2"></div>
-        <div class="network-line line-3"></div>
-        <div class="network-line line-4"></div>
-        <div class="network-line line-5"></div>
-        <div class="network-line line-6"></div>
-
-        <div class="node node-1">
-            <span>BUSINESS</span>
-        </div>
-
-        <div class="node node-2">
-            <span>PEOPLE</span>
-        </div>
-
-        <div class="node node-3">
-            <span>API</span>
-        </div>
-
-        <div class="node node-4">
-            <span>DATA</span>
-        </div>
-
-        <div class="node node-5">
-            <span>AI</span>
-        </div>
-
-        <div class="node node-6">
-            <span>SYSTEMS</span>
-        </div>
-
-        <div class="network-core">
-            <span>DRH</span>
-        </div>
-
+    <div class="expertise-system">
+        <p class="orbit-eyebrow">CONNECTED EXPERTISE</p>
+        <nav class="expertise-orbit" aria-label="Explore my expertise">
+            <div class="orbit-track" aria-hidden="true"></div>
+            <div class="orbit-core" aria-hidden="true"><span>DRH</span><small>DELIVERY</small></div>
+            <div class="orbit-arm" style="--phase: -3s">
+                <a class="orbit-link" href="#selected-work" aria-label="Explore business delivery case studies"><span><i aria-hidden="true"></i>BUSINESS<b aria-hidden="true">↗</b></span></a>
+            </div>
+            <div class="orbit-arm" style="--phase: -15s">
+                <a class="orbit-link" href="#experience" aria-label="Explore my experience leading teams"><span><i aria-hidden="true"></i>PEOPLE<b aria-hidden="true">↗</b></span></a>
+            </div>
+            <div class="orbit-arm" style="--phase: -27s">
+                <a class="orbit-link" href="#technical-work" aria-label="Explore APIs and integration work"><span><i aria-hidden="true"></i>API<b aria-hidden="true">↗</b></span></a>
+            </div>
+            <div class="orbit-arm" style="--phase: -39s">
+                <a class="orbit-link" href="#technical-work" aria-label="Explore SQL and data work"><span><i aria-hidden="true"></i>DATA<b aria-hidden="true">↗</b></span></a>
+            </div>
+            <div class="orbit-arm" style="--phase: -51s">
+                <a class="orbit-link" href="#ai" aria-label="Explore AI-enabled delivery"><span><i aria-hidden="true"></i>AI<b aria-hidden="true">↗</b></span></a>
+            </div>
+            <div class="orbit-arm" style="--phase: -63s">
+                <a class="orbit-link" href="#capabilities" aria-label="Explore implementation capabilities"><span><i aria-hidden="true"></i>SYSTEMS<b aria-hidden="true">↗</b></span></a>
+            </div>
+        </nav>
+        <div class="orbit-caption"><p>Six disciplines. One connected approach.</p><button class="orbit-toggle" type="button" aria-pressed="false" aria-label="Pause orbital motion" hidden><span aria-hidden="true">Ⅱ</span> PAUSE</button></div>
     </div>
-
 </div>
 
         </section>
@@ -121,18 +109,18 @@
             </div>
 
             <div class="stat">
-                <strong>6</strong>
-                <span>CONCURRENT PROJECTS</span>
+                <strong>10+</strong>
+                <span>CONCURRENT PROJECTS AT PEAK</span>
             </div>
 
             <div class="stat">
-                <strong>10–20+</strong>
-                <span>STAKEHOLDERS</span>
+                <strong>GLOBAL</strong>
+                <span>CROSS-FUNCTIONAL TEAMS</span>
             </div>
 
             <div class="stat">
-                <strong>∞</strong>
-                <span>PROBLEMS SOLVED</span>
+                <strong>EN / ES</strong>
+                <span>BILINGUAL DELIVERY</span>
             </div>
 
         </section>
@@ -142,7 +130,7 @@
 
             <p class="section-label">01 / CAPABILITIES</p>
 
-            <h2>COMPLEXITY IS MY COMFORT ZONE.</h2>
+            <h2>Where I can help.</h2>
 
             <div class="capabilities">
 
@@ -258,6 +246,13 @@
     </div>
 
 
+    <div class="case-summary">
+        <p><strong>CHALLENGE</strong> Take over an in-flight manufacturing implementation with evolving requirements and competing technical workstreams.</p>
+        <p><strong>ACTION</strong> Formalize scope and coordinate ERP interfaces, quality software, shop-floor visualization, testing and training.</p>
+        <p><strong>RESULT</strong> Phased production rollout across a documented $500K+ scope, 9 U9 ERP interfaces and 26 visualization pages.</p>
+    </div>
+    <details class="case-details">
+    <summary>Explore the manufacturing case study</summary>
     <!-- CHALLENGE -->
 
     <div class="case-study-block">
@@ -837,6 +832,7 @@
 
     </div>
 
+</details>
 </section>
 
 <!-- =====================================================
@@ -877,9 +873,9 @@
     </div>
 
     <div class="scale-metric">
-        <span>STAKEHOLDERS</span>
-        <strong>30+</strong>
-        <p>CROSS-FUNCTIONAL PARTICIPANTS</p>
+        <span>COLLABORATION</span>
+        <strong>TEAMS</strong>
+        <p>CUSTOMER, OPERATIONAL &amp; TECHNICAL</p>
     </div>
 
     <div class="scale-metric">
@@ -896,6 +892,13 @@
 
 </div>
 
+    <div class="case-summary">
+        <p><strong>CHALLENGE</strong> Keep concurrent customer implementations moving across markets, teams and third-party systems.</p>
+        <p><strong>ACTION</strong> Coordinate requirements, dependencies, risk and validation across the portfolio.</p>
+        <p><strong>RESULT</strong> An organized delivery process supporting portfolios of 10+ concurrent projects at peak, with distributed technical teams.</p>
+    </div>
+    <details class="case-details">
+    <summary>Explore the delivery-at-scale case study</summary>
     <!-- CORE STORY -->
 
     <div class="scale-story">
@@ -1014,7 +1017,7 @@
                 <div class="project-services">
                     <div>REQUIREMENTS</div>
                     <div>TESTING</div>
-                    <div>GO LIVE</div>
+                    <div>GO-LIVE</div>
                 </div>
 
             </div>
@@ -1214,13 +1217,8 @@
 
     </div>
 
+</details>
 </section>
-
-</section>
-<!-- closes DELIVERY AT SCALE -->
-
-</section>
-<!-- END EXIGO -->
 
 
 <!-- =====================================================
@@ -1271,8 +1269,7 @@
             </p>
 
             <h3>
-                SYSTEMS HAVE TO<br>
-                TALK TO EACH OTHER.
+                Systems that work together.
             </h3>
 
             <p>
@@ -1305,8 +1302,7 @@
             </p>
 
             <h3>
-                THE ANSWER IS OFTEN<br>
-                IN THE DATA.
+                Answers in the data.
             </h3>
 
             <p>
@@ -1340,8 +1336,7 @@
             </p>
 
             <h3>
-                BUSINESS NEED<br>
-                → BUILDABLE WORK.
+                From business need to buildable work.
             </h3>
 
             <p>
@@ -1438,7 +1433,7 @@
 
         <h2>
             20+ YEARS.<br>
-            ONE THROUGH-LINE.
+            ONE <span class="through-line">THROUGH-LINE.</span>
         </h2>
 
         <p>
@@ -1711,7 +1706,7 @@
 
             <div>
                 <span>04</span>
-                <strong>DOCUMENTATION</strong>
+                <strong class="ai-flow-documentation">DOCUMENTATION</strong>
                 <small>Produce clearer specifications and communication.</small>
             </div>
 
@@ -1728,6 +1723,9 @@
     </div>
 
 
+    <details class="supporting-details">
+    <summary>Explore my AI workflow and toolkit</summary>
+    <div class="supporting-content">
     <!-- AI USE CASES -->
 
     <div class="ai-use-cases">
@@ -1874,6 +1872,8 @@
 
     </div>
 
+</div>
+</details>
 </section>
 
 
@@ -1886,12 +1886,12 @@
     <div class="game-intro">
 
         <p class="section-label">
-            05 / GAME TIME
+            05 / LET'S PLAY
         </p>
 
         <h2>
-            THERE'S ONE<br>
-            MORE THING.
+            TIME FOR<br>
+            SOMETHING DIFFERENT.
         </h2>
 
         <p class="game-kicker">
@@ -1930,6 +1930,7 @@
         <div
             id="questGame"
             class="quest-game"
+            role="region" aria-label="Implementation Quest game" aria-describedby="quest-hint"
             tabindex="0"
         >
 
@@ -2030,7 +2031,7 @@
                 </strong>
 
                 <p>
-                    Collect all three objectives.
+                    Collect Requirements, Integration, then Go-Live. Jump onto the left platform, then jump toward the higher center platform.
                 </p>
 
                 <button
@@ -2073,6 +2074,8 @@
         </div>
 
 
+        <p id="quest-hint" class="quest-hint">Route: left platform → higher center platform → right platform. Move with arrows or A/D; jump with Space or the touch buttons.</p>
+
         <!-- CONTROLS -->
 
         <div class="quest-controls">
@@ -2106,9 +2109,9 @@
      FOOTER / CONTACT
      ===================================================== -->
 
-<footer id="about" class="site-footer">
+<footer id="contact" class="site-footer">
 
-    <div class="footer-main">
+    <div id="about" class="footer-main">
 
         <p class="footer-kicker">
             ONE LAST THING
@@ -2131,25 +2134,16 @@
         </p>
 
         <div class="footer-actions">
-
-            <a
-                href="https://www.linkedin.com/in/darrenrhudson/"
-                class="button primary"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                CONNECT ON LINKEDIN
-            </a>
-
-            <a href="#selected-work" class="button secondary">
-                VIEW MY WORK
-            </a>
-
+            <a href="mailto:hello@darrenrhudson.com" class="button primary">EMAIL ME</a>
+            <a href="#selected-work" class="button secondary">VIEW MY WORK</a>
+            <a href="https://www.linkedin.com/in/darrenrhudson/" class="button primary" target="_blank" rel="noopener noreferrer">CONNECT ON LINKEDIN</a>
         </div>
 
     </div>
 
 
+    <details class="supporting-details footer-extra">
+    <summary>Behind the scenes</summary>
     <!-- TERMINAL EASTER EGG -->
 
     <div class="footer-terminal">
@@ -2204,6 +2198,8 @@
 
     </div>
 
+
+</details>
 
     <!-- FOOTER BOTTOM -->
 

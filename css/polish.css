@@ -1,0 +1,130 @@
+/* Editorial refinement: quieter surfaces, clear hierarchy, consistent spacing. */
+:root { --bg: #0b0f14; --bg-soft: #10161e; --bg-card: #131b24; --text-muted: #a3acb8; --border: rgba(212,225,240,.13); --max-width: 1120px; }
+body { background: var(--bg); }
+.site-header { padding: 17px 32px; background: rgba(11,15,20,.96); }
+.navigation { gap: 26px; align-items: center; }
+.navigation a { letter-spacing: .08em; }
+.navigation a[href="#contact"] { color: var(--text); border: 1px solid var(--border); padding: 10px 16px; }
+.button { letter-spacing: .07em; }
+.hero { min-height: 760px; padding: 135px 0 80px; gap: 70px; }
+.hero h1 { font-size: clamp(4rem, 7.3vw, 6.5rem); }
+.hero h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-top: 32px; line-height: 1.15; }
+.hero-description { line-height: 1.75; }
+.stats { max-width: var(--max-width); width: calc(100% - 48px); margin: 0 auto; background: transparent; }
+.stat { padding: 26px 20px; background: transparent; }
+.stat strong { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+.stat span { font-size: .62rem; letter-spacing: .08em; }
+.section { padding: 88px 0; }
+.section h2, .case-study-header h2, .scale-header h2,
+.technical-work-header h2, .experience-timeline-header h2,
+.ai-header h2, .game-intro h2 { font-size: clamp(2.2rem, 4.2vw, 3.8rem); line-height: 1.08; letter-spacing: -.035em; }
+.section-label, .case-study-kicker { font-size: .68rem; letter-spacing: .14em; margin-bottom: 20px; }
+.capabilities { gap: 0 36px; margin-top: 38px; }
+.capability { padding: 24px 0; background: transparent; border: 0; border-top: 1px solid var(--border); }
+.capability:hover { background: transparent; transform: none; }
+.capability h3 { font-size: .88rem; letter-spacing: .02em; margin: 12px 0; }
+.capability p { font-size: .87rem; line-height: 1.7; }
+.case-study-section, .scale-case-study { padding: 80px 0; background: var(--bg-soft); border-top: 1px solid var(--border); }
+.scale-case-study { background: var(--bg); }
+.case-study-section::before, .scale-case-study::before,
+.technical-work-section::before, .experience-timeline-section::before,
+.ai-section::before, .ai-section::after, .site-footer::before { display: none; }
+.case-study-header, .scale-header { padding-bottom: 32px; }
+.case-study-intro, .scale-intro { font-size: 1rem; line-height: 1.8; max-width: 760px; }
+.case-study-identity, .scale-metrics { margin-bottom: 36px; }
+.case-study-identity > div { padding-block: 22px; }
+.scale-metric { padding: 22px; background: transparent; }
+.scale-metric strong { font-size: clamp(1.5rem, 3vw, 2.6rem); }
+.case-summary { gap: 28px; margin-bottom: 30px; }
+.case-summary p { padding: 22px 0; border: 0; border-top: 1px solid var(--border); background: transparent; font-size: .94rem; line-height: 1.75; }
+.case-details > summary, .supporting-details > summary { border: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; font-size: .87rem; color: var(--accent); cursor: pointer; }
+.case-details > summary:hover, .supporting-details > summary:hover { background: rgba(88,214,255,.035); }
+.technical-work-section, .experience-timeline-section, .ai-section { padding: 80px 30px; background: var(--bg-soft); border-top: 1px solid var(--border); }
+.experience-timeline-section { background: var(--bg); }
+.technical-work-header, .experience-timeline-header, .ai-header { margin-bottom: 44px; }
+.technical-work-header h3, .ai-header h3 { font-size: clamp(1.25rem, 2.4vw, 1.8rem); line-height: 1.25; margin: 20px 0; }
+.technical-work-header p, .experience-timeline-header > p:last-child, .ai-header > p:last-child { font-size: 1rem; line-height: 1.8; max-width: 760px; }
+.technical-pillars { gap: 28px; }
+.technical-pillar { padding: 26px 0; border: 0; border-top: 1px solid var(--border); background: transparent; box-shadow: none; }
+.technical-pillar::before, .technical-pillar-number { display: none; }
+.technical-pillar:hover { transform: none; box-shadow: none; background: transparent; }
+.technical-pillar h3 { font-size: 1.45rem; line-height: 1.2; letter-spacing: -.02em; min-height: 3.6em; }
+.technical-pillar > p:not(.case-study-kicker) { font-size: .94rem; line-height: 1.8; }
+.technical-tags { gap: 8px 14px; margin-top: 22px; }
+.technical-tags span { padding: 0; border: 0; background: transparent; font-size: .6rem; color: var(--text-muted); }
+.technical-flow { margin-top: 32px; padding-top: 28px; }
+.technical-flow-grid > div:not(.technical-flow-arrow) { min-height: 90px; padding: 16px; background: transparent; }
+.experience-stage { min-height: 0; padding: 30px 0; grid-template-columns: 100px 210px minmax(0,1fr); gap: 28px; }
+.experience-stage-content h3 { font-size: 1.6rem; line-height: 1.15; margin-bottom: 14px; }
+.experience-stage-content p { font-size: .94rem; line-height: 1.75; }
+.experience-stage.featured, .experience-stage.future { background: transparent; }
+.experience-stage-marker::before { box-shadow: none; }
+.experience-stage.future .experience-stage-marker::before { animation: none; }
+.experience-stage.featured .experience-stage-marker::before { box-shadow: 0 0 0 4px rgba(88,214,255,.05); }
+.timeline-link { margin-top: 16px; }
+.ai-workflow { margin-bottom: 36px; }
+.ai-workflow-heading { margin-bottom: 28px; }
+.ai-workflow-heading h3, .ai-tools-heading h3 { font-size: 1.6rem; line-height: 1.2; }
+.ai-flow-grid > div:not(.ai-flow-arrow) { min-height: 170px; background: transparent; padding: 18px 14px; }
+.ai-flow-grid > div:not(.ai-flow-arrow)::before { display: none; }
+.ai-flow-grid > div:not(.ai-flow-arrow):hover { transform: none; box-shadow: none; }
+.ai-flow-arrow, .technical-flow-arrow { animation: none; opacity: .5; }
+.supporting-details { max-width: var(--max-width); margin: 0 auto; text-align: left; }
+.supporting-content { padding-top: 36px; }
+.ai-use-cases { gap: 24px; }
+.ai-use-cases article { padding: 22px 0; min-height: 250px; background: transparent; border: 0; border-top: 1px solid var(--border); }
+.ai-use-cases article h3 { font-size: 1.1rem; line-height: 1.3; }
+.ai-use-cases article:hover { transform: none; box-shadow: none; }
+.ai-tools { margin-top: 42px; }
+.ai-tool-grid > div { min-height: 180px; padding: 20px; background: transparent; }
+.ai-outcome { margin-top: 44px; padding: 30px 0 0; background: transparent; }
+.ai-outcome::before { display: none; }
+.ai-outcome h3 { font-size: 1.7rem; line-height: 1.2; }
+.game-section { padding: 80px 0; }
+.game-intro { margin-bottom: 36px; }
+.game-kicker { font-size: .78rem; }
+.game-description { font-size: 1rem; }
+.quest-shell { box-shadow: none; }
+.site-footer { padding: 80px 30px 30px; background: var(--bg-soft); }
+.footer-main { margin-bottom: 44px; }
+.footer-main h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; }
+.footer-main h3 { font-size: clamp(1.8rem, 3.5vw, 3rem); }
+.footer-intro { font-size: 1rem; }
+.footer-extra { margin-bottom: 40px; }
+.footer-terminal { margin: 24px auto 0; }
+.footer-bottom { padding-top: 28px; }
+@media (max-width: 900px) {
+ .hero { min-height: 0; gap: 40px; }
+ .experience-stage { grid-template-columns: 80px 170px minmax(0,1fr); gap: 24px; }
+ .technical-pillar h3 { min-height: 0; }
+ .ai-use-cases { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 650px) {
+ .site-header { padding: 12px 20px; }
+ .navigation { gap: 6px 18px; }
+ .hero { padding: 120px 0 48px; }
+ .hero h1 { font-size: clamp(3.4rem,16vw,5rem); }
+ .hero h2 { font-size: 1.6rem; }
+ .stats { width: calc(100% - 32px); }
+ .stat { padding: 20px 12px; }
+ .section { padding: 56px 0; }
+ .section h2, .case-study-header h2, .scale-header h2, .technical-work-header h2,
+ .experience-timeline-header h2, .ai-header h2, .game-intro h2 { font-size: clamp(1.9rem,8vw,2.6rem); }
+ .capabilities { grid-template-columns: 1fr; }
+ .case-study-section, .scale-case-study { padding: 56px 0; }
+ .technical-work-section, .experience-timeline-section, .ai-section { padding: 56px 20px; }
+ .case-summary { gap: 0; }
+ .case-summary p { padding: 18px 0; }
+ .experience-stage { grid-template-columns: 1fr; gap: 12px; padding: 28px 0 28px 18px; }
+ .experience-stage-marker { top: 30px; }
+ .experience-stage-content h3 { font-size: 1.5rem; }
+ .experience-stage-period strong { font-size: .75rem; }
+ .ai-use-cases { grid-template-columns: 1fr; }
+ .ai-use-cases article { min-height: 210px; }
+ .ai-flow-grid > div:not(.ai-flow-arrow) { min-height: 150px; }
+ .game-section { padding: 56px 16px; }
+ .site-footer { padding: 56px 20px 26px; }
+ .footer-main h2 { font-size: 2.5rem; }
+ .footer-main h3 { font-size: 2rem; }
+}
+.technical-pillars { border: 0; margin-bottom: 28px; } .technical-pillar { min-height: 0; } .technical-pillar h3 { min-height: 2.4em; margin-bottom: 20px; } .technical-pillar > p:not(.case-study-kicker) { margin-bottom: 0; } .ai-workflow { padding: 36px 0; }

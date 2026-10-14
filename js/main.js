@@ -1,3 +1,34 @@
+// Mobile navigation retains ordinary links when JavaScript is unavailable.
+(() => {
+    const toggle = document.querySelector('.menu-toggle');
+    const navigation = document.getElementById('site-navigation');
+    toggle.hidden = false;
+    document.documentElement.classList.add('navigation-ready');
+    function closeMenu(returnFocus = false) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = 'MENU';
+        if (returnFocus) toggle.focus();
+    }
+    toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.textContent = open ? 'CLOSE' : 'MENU';
+    });
+    navigation.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeMenu(true);
+    });
+    document.addEventListener('click', event => {
+        if (!event.target.closest('.site-header')) closeMenu();
+    });
+    document.querySelector('.site-header').addEventListener('focusout', event => {
+        if (!event.currentTarget.contains(event.relatedTarget)) closeMenu();
+    });
+    matchMedia('(max-width: 650px)').addEventListener('change', () => closeMenu());
+})();
+
 /* =========================================================
    THE IMPLEMENTATION QUEST — GAME v0.1
    ========================================================= */
@@ -87,7 +118,7 @@
         </button>
     `;
 
-    shell.appendChild(touchControls);
+    game.insertAdjacentElement("afterend", touchControls);
 
 
     /* -----------------------------------------------------
@@ -313,7 +344,7 @@ function applyObjectiveProgress(id) {
 
     moveSpeed: 260,
 
-    jumpStrength: 485,
+    jumpStrength: 520,
 
     gravity: 1080,
 
@@ -454,7 +485,7 @@ function applyObjectiveProgress(id) {
 function clearCelebrationArtifacts() {
 
     game.querySelectorAll(
-        ".quest-live-label, .quest-launch-wave, .quest-confetti"
+        ".quest-live-label, .quest-launch-wave, .quest-confetti, .quest-burst"
     ).forEach(node => {
 
         node.remove();
@@ -487,6 +518,10 @@ function clearCelebrationArtifacts() {
     function resetGame() {
 
         state.completed = false;
+        state.keys.left = false;
+        state.keys.right = false;
+        clearTimeout(toastTimer);
+        toast.classList.remove("show");
 
         state.collected.clear();
 
@@ -685,143 +720,11 @@ function checkCollectibles() {
    ----------------------------------------------------- */
 
 function launchCelebration() {
-
     clearCelebrationArtifacts();
-
-    game.classList.add(
-        "quest-live"
-    );
-
-    setMilestone(
-        "PRODUCTION LIVE"
-    );
-
-
-    const groundLabel =
-        game.querySelector(
-            ".quest-ground span"
-        );
-
-    if (groundLabel) {
-
-        groundLabel.textContent =
-            "PRODUCTION ENVIRONMENT / LIVE";
-
-    }
-
-
-    /* launch wave */
-
-    const wave =
-        document.createElement("div");
-
-    wave.className =
-        "quest-launch-wave";
-
-    game.appendChild(wave);
-
-
-    wave.addEventListener(
-        "animationend",
-        () => {
-
-            wave.remove();
-
-        },
-        {
-            once: true
-        }
-    );
-
-
-    /* live message */
-
-    const liveLabel =
-        document.createElement("div");
-
-    liveLabel.className =
-        "quest-live-label";
-
-    liveLabel.textContent =
-        "PRODUCTION LIVE";
-
-    game.appendChild(liveLabel);
-
-
-    liveLabel.addEventListener(
-        "animationend",
-        () => {
-
-            liveLabel.remove();
-
-        },
-        {
-            once: true
-        }
-    );
-
-
-    /* celebration particles */
-
-    for (
-        let i = 0;
-        i < 22;
-        i++
-    ) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.className =
-            "quest-confetti";
-
-
-        particle.style.left =
-            `${45 + Math.random() * 10}%`;
-
-        particle.style.top =
-            `${42 + Math.random() * 12}%`;
-
-
-        particle.style.setProperty(
-            "--drift-x",
-            `${
-                -220 +
-                Math.random() * 440
-            }px`
-        );
-
-
-        particle.style.setProperty(
-            "--drift-y",
-            `${
-                -80 +
-                Math.random() * 230
-            }px`
-        );
-
-
-        game.appendChild(
-            particle
-        );
-
-
-        particle.addEventListener(
-            "animationend",
-            () => {
-
-                particle.remove();
-
-            },
-            {
-                once: true
-            }
-        );
-
-    }
-
+    game.classList.add('quest-live');
+    setMilestone('PRODUCTION LIVE');
+    game.querySelector('.quest-ground span').textContent = 'PRODUCTION ENVIRONMENT / LIVE';
 }
-
 
     /* -----------------------------------------------------
        HAZARDS
@@ -1116,7 +1019,7 @@ if (direction > 0) {
 
         checkCollectibles();
 
-        checkHazards();
+        if (!state.completed) checkHazards();
 
     }
 
@@ -1152,10 +1055,9 @@ if (direction > 0) {
 
         update(elapsed);
 
-        state.frame =
-            requestAnimationFrame(
-                loop
-            );
+        if (state.running) {
+            state.frame = requestAnimationFrame(loop);
+        }
 
     }
 
@@ -1178,7 +1080,7 @@ if (direction > 0) {
 
         resetGame();
 
-        game.focus();
+        game.focus({ preventScroll: true });
 
         cancelAnimationFrame(
             state.frame
@@ -1207,6 +1109,7 @@ function completeQuest() {
     }
 
     state.completed = true;
+    state.running = false;
 
     state.velocityX = 0;
     state.keys.left = false;
@@ -1223,6 +1126,7 @@ function completeQuest() {
 
     setTimeout(() => {
         completePanel.hidden = false;
+        restartButton.focus({ preventScroll: true });
     }, 1250);
 }
 
@@ -1248,6 +1152,8 @@ function completeQuest() {
     game.addEventListener(
         "keydown",
         event => {
+
+            if (event.target.closest("button")) return;
 
             if (
                 isEditableTarget(
@@ -1360,13 +1266,17 @@ function completeQuest() {
 
                     event.preventDefault();
 
-                    game.focus();
+                    game.focus({ preventScroll: true });
 
                     jump();
 
                 }
             );
 
+            button.addEventListener('click', event => {
+                // Keyboard and assistive-technology clicks have no pointer detail.
+                if (event.detail === 0) jump();
+            });
             return;
 
         }
@@ -1402,7 +1312,7 @@ function completeQuest() {
 
                 event.preventDefault();
 
-                game.focus();
+                game.focus({ preventScroll: true });
 
                 setControlState(
                     true
@@ -1411,6 +1321,20 @@ function completeQuest() {
             }
         );
 
+
+        button.addEventListener('keydown', event => {
+            if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+                setControlState(true);
+            }
+        });
+        button.addEventListener('keyup', event => {
+            if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+                setControlState(false);
+            }
+        });
+        button.addEventListener('blur', () => setControlState(false));
 
         [
             "pointerup",
@@ -1504,6 +1428,27 @@ function completeQuest() {
        INITIAL POSITION
        ----------------------------------------------------- */
 
+    function releaseMovement() {
+        state.keys.left = false;
+        state.keys.right = false;
+    }
+    window.addEventListener('blur', releaseMovement);
+    game.addEventListener('blur', releaseMovement);
+    document.addEventListener('visibilitychange', releaseMovement);
     resetPlayer();
 
+})();
+// Visitors can stop the orbit; hovering or keyboard focus also holds links still.
+(() => {
+    const system = document.querySelector('.expertise-system');
+    const button = system.querySelector('.orbit-toggle');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    button.hidden = reducedMotion.matches;
+    reducedMotion.addEventListener('change', event => { button.hidden = event.matches; });
+    button.addEventListener('click', () => {
+        const paused = system.classList.toggle('orbit-paused');
+        button.setAttribute('aria-pressed', String(paused));
+        button.setAttribute('aria-label', paused ? 'Resume orbital motion' : 'Pause orbital motion');
+        button.innerHTML = paused ? '<span aria-hidden="true">▷</span> RESUME' : '<span aria-hidden="true">Ⅱ</span> PAUSE';
+    });
 })();
