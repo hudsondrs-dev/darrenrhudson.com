@@ -1,0 +1,25 @@
+.launch-shell { margin-top: 28px; scroll-margin-top: 90px; }
+.launch-stage { position: relative; background: #090d15; }
+.launch-stage canvas { display: block; width: 100%; height: auto; aspect-ratio: 12 / 7; outline-offset: -3px; }
+.launch-stage canvas:focus-visible, .launch-shell button:focus-visible { outline: 2px solid var(--accent, #58d6ff); }
+.launch-panel { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; padding: 20px; text-align: center; background: rgba(5,9,16,.93); }
+.launch-panel[hidden] { display: none; }
+.launch-panel .launch-kicker { font-size: .65rem; color: #58d6ff; letter-spacing: .18em; }
+.launch-panel h3 { color: #f2f6ff; font-size: clamp(1.5rem, 4vw, 3.2rem); line-height: 1.05; margin: 12px 0; }
+.launch-panel p { max-width: 430px; color: #afbdd0; font-size: .9rem; line-height: 1.6; }
+.launch-shell button, .launch-next { border: 1px solid #58d6ff; background: #112936; color: #dff7ff; padding: 12px 18px; font: inherit; font-size: .75rem; font-weight: 700; cursor: pointer; }
+.launch-panel button { margin-top: 16px; }
+.launch-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--border); }
+.launch-toolbar p { color: #b5c1d0; font-size: .75rem; }
+.launch-touch { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 10px; padding: 0 20px 16px; }
+.launch-touch button { touch-action: none; user-select: none; min-height: 48px; }
+.launch-touch button { padding-inline: 8px; white-space: nowrap; }
+.launch-touch button:active { background: #24566a; }
+.launch-legend { padding: 12px 20px; color: #b5c1d0; font-size: .75rem; line-height: 1.8; }
+.launch-next { display: block; margin: 12px auto 0; }
+@media (max-width: 550px) {
+  .launch-stage canvas { aspect-ratio: 4 / 5; }
+  .launch-shell .quest-header { flex-wrap: wrap; }
+  .launch-panel p { font-size: .8rem; }
+  .launch-toolbar { align-items: flex-start; }
+}
